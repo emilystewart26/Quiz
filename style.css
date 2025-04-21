@@ -82,3 +82,33 @@ input, .btn {
     color: red; 
     padding: 1.5rem;
 }
+
+#progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: 15px;
+    position: relative;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #4caf50;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: semibold;
+}
+
+#progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: x-small;
+}

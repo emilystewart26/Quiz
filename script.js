@@ -5,6 +5,8 @@ const nextButton = document.getElementById("next-btn");
 const restartButton = document.getElementById("restart-btn");
 const resultDiv = document.getElementById("result");
 const errorMessage = document.getElementById("error-message");
+const progressBar = document.getElementById("progress-bar");
+const progressText = document.getElementById("progress-text");
 
 let shuffledQuestions, currentQuestionIndex, score;
 
@@ -80,8 +82,9 @@ function startQuiz() {
 }
 
 function setNextQuestion() {
-  resetState();
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
+    resetState();
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    updateProgressBar();
 }
 
 function showQuestion(question) {
@@ -131,6 +134,12 @@ nextButton.addEventListener("click", () => {
     errorMessage.classList.remove("hide");
   }
 });
+
+function updateProgressBar() {
+    const progress = ((currentQuestionIndex + 1) / shuffledQuestions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+    progressText.innerText = `Q${currentQuestionIndex + 1} of ${shuffledQuestions.length}`;
+}
 
 restartButton.addEventListener("click", startQuiz);
 
