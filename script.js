@@ -4,6 +4,7 @@ const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 const restartButton = document.getElementById("restart-btn");
 const resultDiv = document.getElementById("result");
+const errorMessage = document.getElementById("error-message");
 
 let shuffledQuestions, currentQuestionIndex, score;
 
@@ -21,7 +22,7 @@ const questions = [
 
   {
     question:
-      "Which company released the first handheld calculator in 1970??",
+      "Which company released the first handheld calculator in 1970?",
     answers: [
       { text: "Hewlett-Packard", correct: false },
       { text: "Casio", correct: false },
@@ -109,6 +110,7 @@ function resetState() {
   while (answerButtons.firstChild) {
     answerButtons.removeChild(answerButtons.firstChild);
   }
+  errorMessage.classList.add("hide");
 }
 
 nextButton.addEventListener("click", () => {
@@ -126,7 +128,7 @@ nextButton.addEventListener("click", () => {
       endQuiz();
     }
   } else {
-    alert("Please select an answer.");
+    errorMessage.classList.remove("hide");
   }
 });
 
