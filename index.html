@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Quiz</title>
-</head>
-<body class="flex items-center justify-center bg-gray-200">
+  </head>
+
+  <body>
     <div class="quiz-container">
-        <div class="border-gray-400" id="question-container">
-            <h3 class="text-xl" id="question">Question</h3>
-            <div class="border-gray-400" id="answer-buttons"></div>
-        </div>
-        </div>
-        <button id="next-btn" class="btn hide">Next</button>
-        <div id="result" class="hide">Result</div>
-        <button id="restart-btn" class="btn hide">Restart</button>
-        <script src="script.js"></script>
-    </body>
+      <div id="question-container">
+        <h3 id="question">Question</h3>
+        <div id="answer-buttons"></div>
+      </div>
+      <button id="next-btn" class="btn hide">Next</button>
+      <div id="result" class="hide"></div>
+      <button id="restart-btn" class="btn hide">Restart</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

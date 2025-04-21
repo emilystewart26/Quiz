@@ -47,7 +47,7 @@ const questions = [
     answers: [
       { text: "Scientific calculators have larger screens", correct: false },
       { text: "Scientific calculators can graph equations", correct: false },
-      { text: "Scientif calculators are only used by scientists", correct: false },
+      { text: "Scientific calculators are only used by scientists", correct: false },
       { text: "Scientific calculators can perform advanced functions like trigonometry and logarithms", correct: true },
     ],
   },
@@ -68,75 +68,74 @@ const questions = [
 startQuiz();
 
 function startQuiz() {
-    score = 0;
-    questionContainer.style.display = "flex";
-    shuffledQuestions = questions.sort (() => Math.random() - 0.5);
-    currentQuestionIndex = 0;
-    nextButton.classList.remove("hide");
-    restartButton.classList.add("hide");
-    resultDiv.classList.add("hide");
-    setNextQuestion();
+  score = 0;
+  questionContainer.style.display = "flex";
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  nextButton.classList.remove("hide");
+  restartButton.classList.add("hide");
+  resultDiv.classList.add("hide");
+  setNextQuestion();
 }
 
 function setNextQuestion() {
-    resetState();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
+  resetState();
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 function showQuestion(question) {
-    questionElement.innerText = question.question;
-    question.answers.forEach((answer, index)=> {
-        const inputGroup = document.createElement("div");
-        inputGroup.classList.add("input-group");
+  questionElement.innerText = question.question;
+  question.answers.forEach((answer, index) => {
+    const inputGroup = document.createElement("div");
+    inputGroup.classList.add("input-group");
 
-        const radio = document.createElement("input");
-        radio.type = "radio";
-        radio.id = "answer" + index;
-        radio.name = "answer";
-        radio.value = index;
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.id = "answer" + index;
+    radio.name = "answer";
+    radio.value = index;
 
-        const label = document.createElement("label");
-        label.htmlFor = "answer" + index;
-        label.innerText = answer.text;
+    const label = document.createElement("label");
+    label.htmlFor = "answer" + index;
+    label.innerText = answer.text;
 
-        inputGroup.appendChild(radio);
-        inputGroup.appendChild(label);
-        answerButtons.appendChild(inputGroup);
-    });
+    inputGroup.appendChild(radio);
+    inputGroup.appendChild(label);
+    answerButtons.appendChild(inputGroup);
+  });
 }
 
 function resetState() {
-    while (answerButtons.firstChild) {
-        answerButtons.removeChild(answerButtons.firstChild);  
-    }
+  while (answerButtons.firstChild) {
+    answerButtons.removeChild(answerButtons.firstChild);
+  }
 }
 
 nextButton.addEventListener("click", () => {
-    const answerIndex = Array.from(
-        answerButtons.querySelectorAll("input")
-    ).findIndex((radio) => radio.checked);
-    if (answerIndex !== -1) {
-        if(shuffledQuestions[currentQuestionIndex].answers[answerIndex].
-            correct) {
-                score++;
-            }
-            currentQuestionIndex++;
-            if(shuffledQuestions.length > currentQuestionIndex) {
-                setNextQuestion();
-            } else {
-                endQuiz();
-            }
-    } else {
-        alert("Please select an answer.");
+  const answerIndex = Array.from(
+    answerButtons.querySelectorAll("input")
+  ).findIndex((radio) => radio.checked);
+  if (answerIndex !== -1) {
+    if (shuffledQuestions[currentQuestionIndex].answers[answerIndex].correct) {
+      score++;
     }
+    currentQuestionIndex++;
+    if (shuffledQuestions.length > currentQuestionIndex) {
+      setNextQuestion();
+    } else {
+      endQuiz();
+    }
+  } else {
+    alert("Please select an answer.");
+  }
 });
 
 restartButton.addEventListener("click", startQuiz);
 
 function endQuiz() {
-    questionContainer.style.display = "none";
-    nextButton.classList.add("hide");
-    restartButton.classList.remove("hide");
-    resultDiv.classList.remove("hide");
-    resultDiv.innerText = `Your final score: ${score} / ${shuffledQuestions.length}`;
+  questionContainer.style.display = "none";
+  nextButton.classList.add("hide");
+  restartButton.classList.remove("hide");
+  resultDiv.classList.remove("hide");
+  resultDiv.innerText = `Your final score: ${score} / ${shuffledQuestions.length}`;
 }
