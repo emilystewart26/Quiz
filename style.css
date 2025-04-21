@@ -78,4 +78,7 @@ input, .btn {
     font-weight: bold;
 }
 
-
+#error-message {
+    color: red; 
+    padding: 1.5rem;
+}
