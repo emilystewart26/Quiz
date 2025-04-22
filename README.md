@@ -2,7 +2,7 @@
 
 This is a quiz website built using **HTML**, **CSS**, and **JavaScript**.
 
-🚀 **Deployed on GitHub Pages:** [View Website](https://github.com/emilystewart26/quiz.git)
+🚀 **Deployed on GitHub Pages:** [View Website](https://emilystewart26.github.io/quiz/)
 
 ---
 
